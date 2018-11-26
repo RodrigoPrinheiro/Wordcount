@@ -1,16 +1,13 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -Wpedantic -std=c99 -g
-PROGRAM=wordcount
+# Antes de usar fazer: cp Makefile1 Makefile
 
-$(PROGRAM): main.o wcfuncs.o
-	$(CC) main.o wcfuncs.o -o $(PROGRAM)
+wordcount: main.o wcfuncs.o
+	gcc main.o wcfuncs.o -o wordcount
 
 main.o: main.c wcfuncs.h
-	$(CC) $(CFLAGS) -c -o main.o main.c
+	gcc -Wall -Wextra -Wpedantic -std=c99 -g -c -o main.o main.c
 
 wcfuncs.o: wcfuncs.c wcfuncs.h
-	$(CC) $(CFLAGS) -c -o wcfuncs.o wcfuncs.c
+	gcc -Wall -Wextra -Wpedantic -std=c99 -g -c -o wcfuncs.o wcfuncs.c
 
 clean:
-	rm -f $(PROGRAM) *.o
-
+	rm -f wordcount *.o
